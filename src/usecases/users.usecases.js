@@ -16,12 +16,12 @@ const userFound = await Users.findOne({ email: userData.email })
 }
 
 async function getAll() {
-  const allUsers = await Users.find().populate("generation")
+  const allUsers = await Users.find() /*.populate("generation") */
   return allUsers
 }
 
 async function getById(id) {
-  const user = await Users.findById(id).populate("generation")
+  const user = await Users.findById(id) /*.populate("generation") */
   return user
 }
 
