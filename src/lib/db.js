@@ -9,7 +9,6 @@ const {
 
 const URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
-
 function connect () {
   return mongoose.connect(URI)
 }
