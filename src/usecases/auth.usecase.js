@@ -14,7 +14,7 @@ async function login (email, password) {
   const isPasswordValid = await encrypt.compare(password, user.password)
 
   if (!isPasswordValid) {
-    throw createError(401, 'That is not the right password... stop trying to steal accounts fropm decent people')
+    throw createError(401, 'That is not the right password... stop trying to steal accounts from decent people')
   }
 
   const token = jwt.sign({ id: user._id})
