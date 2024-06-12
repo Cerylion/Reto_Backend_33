@@ -16,7 +16,7 @@ const userFound = await Users.findOne({ email: userData.email })
 }
 
 async function getAll() {
-  const allUsers = await Users.find() /*.populate("generation") */
+  const allUsers = await Users.find()
   return allUsers
 }
 
@@ -25,20 +25,8 @@ async function getById(id) {
   return user
 }
 
-async function deleteById(id) {
-  const userDeleted = await Users.findByIdAndDelete(id)
-  return userDeleted
-}
-
-async function updateById(id, newUserData) {
-  const updatedUser = await Users.findByIdAndUpdate(id, newUserData, { new: true})
-  return updatedUser
-}
-
 module.exports = {
   create,
   getAll,
-  getById,
-  deleteById,
-  updateById,
+  getById
 }
