@@ -46,6 +46,31 @@ router.post('/', auth, async (request, response) => {
   }
 })
 
+router.get('/:id', auth, async (request, response) => {
+  try {
+    const { authorization } = request.headers
+    const token = authorization
+    function getTheUsefulBit() {
+      return token.split(".")
+    }
+    const userToken = getTheUsefulBit()[1]
+    const userID = JSON.parse(atob(userToken)).id
+    const { id } = request.params
+    
+    const post = await postUsecases.getByID(id, userID)
+    response.json({
+      success:true,
+      data:{ post }
+    })
+  } catch (error) {
+    response.status(error.status || 500)
+    response.json({
+      success:false,
+      error: error.message
+    })
+  }
+})
+
 router.patch('/:id', auth, async (request, response) => {
   try {
     const { authorization } = request.headers

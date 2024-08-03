@@ -23,6 +23,11 @@ async function deleteById(id, userID) {
   return await Posts.findByIdAndDelete(id)
 }
 
+async function getById(id, UserID) {
+  const post = await Posts.findById(id)
+  return post
+}
+
 async function updateById(id, newPostData, userID) {
   newPostData.updatedAt = Date.now()
   const postToUpdate = await Posts.findById(id)
