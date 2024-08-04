@@ -40,5 +40,6 @@ module.exports = {
   create,
   getAll,
   deleteById,
-  updateById
+  updateById,
+  getById
 }
