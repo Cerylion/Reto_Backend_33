@@ -24,7 +24,7 @@ router.get('/', async (request, response) => {
 router.post('/', auth, async (request, response) => {
   try {
     const { authorization } = request.headers
-    const token = authorization
+    const token = authorization.split(" ")[1]
     function getTheUsefulBit() {
       return token.split(".")
     }
