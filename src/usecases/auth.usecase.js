@@ -18,7 +18,7 @@ async function login (email, password) {
   }
 
   const token = jwt.sign({ id: user._id})
-  return token
+  return {token, userId: user._id}
 
 }
 
