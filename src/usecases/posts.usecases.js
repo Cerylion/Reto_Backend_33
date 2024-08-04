@@ -32,7 +32,7 @@ async function updateById(id, newPostData, userID) {
   const postToUpdate = await Posts.findById(id)
   if (postToUpdate.user != userID) throw createHttpError(401, "You cannot update this post with your face. Post can only be updated with the creator's face.")
 
-  return await Koders.findByIdAndUpdate(id, newPostData, { new: true})
+  return await Posts.findByIdAndUpdate(id, newPostData, { new: true})
 }
 
 module.exports = {
