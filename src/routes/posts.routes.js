@@ -96,8 +96,12 @@ router.patch('/:id', auth, async (request, response) => {
 router.delete('/:id', auth, async (request, response) => {
   try {
     const { id } = request.params
-    const { Authorization } = request.headers
-    const token = authorization
+    const { authorization } = request.headers
+    let token = authorization
+
+    if (!token) {
+      token = request.headers['Authorization']
+    }
     function getTheUsefulBit() {
       return token.split(".")
     }
