@@ -66,7 +66,7 @@ router.get('/:id', async (request, response) => {
 
 router.patch('/:id', auth, async (request, response) => {
   try {
-    const { authorization } = request.headers
+    const { Authorization } = request.headers
     const token = authorization
     function getTheUsefulBit() {
       return token.split(".")
