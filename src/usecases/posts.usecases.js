@@ -23,7 +23,7 @@ async function deleteById(id, userID) {
   return await Posts.findByIdAndDelete(id)
 }
 
-async function getById(id, UserID) {
+async function getById(id) {
   const post = await Posts.findById(id)
   return post
 }
