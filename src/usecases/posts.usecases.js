@@ -3,7 +3,6 @@ const Posts = require('../models/posts.model')
 
 async function create(postData, userID) {
   postData.user = userID
-
   return await Posts.create(postData)
 }
 
@@ -25,7 +24,7 @@ async function deleteById(id, userID) {
 
 async function getById(id) {
   const post = await Posts.findById(id)
-  return post
+  return post 
 }
 
 async function updateById(id, newPostData, userID) {

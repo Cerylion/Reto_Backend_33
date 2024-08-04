@@ -50,7 +50,7 @@ router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params
     
-    const post = await postUsecases.getByID(id)
+    const post = await postUsecases.getById(id)
     response.json({
       success:true,
       data:{ post }
