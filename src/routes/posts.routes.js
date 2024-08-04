@@ -70,16 +70,21 @@ router.get('/:id', async (request, response) => {
 
 router.patch('/:id', auth, async (request, response) => {
   try {
-    const { Authorization } = request.headers
-    const token = authorization
+    const { authorization } = request.headers
+    let token = authorization
+
+    if (!token) {
+      token = request.headers['Authorization']
+    }
     function getTheUsefulBit() {
       return token.split(".")
     }
     const userToken = getTheUsefulBit()[1]
     const userID = JSON.parse(atob(userToken)).id
+
     const { id } = request.params
     
-    const updatedPost = await postUsecases.updateByID(id, request.body, userID)
+    const updatedPost = await postUsecases.updateById(id, request.body, userID)
     response.json({
       success:true,
       data:{ post: updatedPost }
